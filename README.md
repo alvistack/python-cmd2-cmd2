@@ -1,4 +1,7 @@
-cmd2: a tool for building interactive command line apps
+<h1 align="center">cmd2</h1>
+
+### a tool for building interactive command line apps
+
 =======================================================
 [![Latest Version](https://img.shields.io/pypi/v/cmd2.svg?style=flat-square&label=latest%20stable%20version)](https://pypi.python.org/pypi/cmd2/)
 [![GitHub Actions](https://github.com/python-cmd2/cmd2/workflows/CI/badge.svg)](https://github.com/python-cmd2/cmd2/actions?query=workflow%3ACI)
@@ -353,25 +356,16 @@ Open source projects using cmd2
 
 Here are a few examples of open-source projects which use `cmd2`:
 
-* [Jok3r](http://www.jok3r-framework.com)
-    * Network & Web Pentest Automation Framework
-* [CephFS Shell](http://docs.ceph.com/docs/master/cephfs/cephfs-shell/)
-    * [Ceph](https://ceph.com/) is a distributed object, block, and file storage platform
-* [JSShell](https://github.com/Den1al/JSShell)
-    * An interactive multi-user web JavaScript shell
-* [psiTurk](https://psiturk.org)
-    * An open platform for science on Amazon Mechanical Turk
-* [Poseidon](https://github.com/CyberReboot/poseidon)
-    * Leverages software-defined networks (SDNs) to acquire and then feed network traffic to a number of machine learning techniques
-* [Unipacker](https://github.com/unipacker/unipacker)
-    * Automatic and platform-independent unpacker for Windows binaries based on emulation
-* [FLASHMINGO](https://github.com/fireeye/flashmingo)
-    * Automatic analysis of SWF files based on some heuristics. Extensible via plugins.
-* [tomcatmanager](https://github.com/tomcatmanager/tomcatmanager)
-    * A command line tool and python library for managing a tomcat server
-* [Expliot](https://gitlab.com/expliot_framework/expliot)
-    * Internet of Things (IoT) exploitation framework
-* [mptcpanalyzer](https://github.com/teto/mptcpanalyzer)
-    * Tool to help analyze mptcp pcaps
-* [clanvas](https://github.com/marklalor/clanvas)
-    * Command-line client for Canvas by Instructure
+| Application Name                                                      | Description                                                                                                                     |
+|-----------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| [Jok3r](http://www.jok3r-framework.com)                               | Network & Web Pentest Automation Framework                                                                                      |
+| [CephFS Shell](http://docs.ceph.com/docs/master/cephfs/cephfs-shell/) | [Ceph](https://ceph.com/) is a distributed object, block, and file storage platform                                             |
+| [JSShell](https://github.com/Den1al/JSShell)                          | An interactive multi-user web JavaScript shell.                                                                                 |
+| [psiTurk](https://psiturk.org)                                        | An open platform for science on Amazon Mechanical Turk                                                                          |
+| [Poseidon](https://github.com/CyberReboot/poseidon)                   | Leverages software-defined networks (SDNs) to acquire and then feed network traffic to a number of machine learning techniques. |
+| [Unipacker](https://github.com/unipacker/unipacker)                   | Automatic and platform-independent unpacker for Windows binaries based on emulation                                             |
+| [FLASHMINGO](https://github.com/fireeye/flashmingo)                   | Automatic analysis of SWF files based on some heuristics. Extensible via plugins.                                               |
+| [tomcatmanager](https://github.com/tomcatmanager/tomcatmanager)       | A command line tool and python library for managing a tomcat server                                                             |
+| [Expliot](https://gitlab.com/expliot_framework/expliot)               | Internet of Things (IoT) exploitation framework                                                                                 |
+| [mptcpanalyzer](https://github.com/teto/mptcpanalyzer)                | Tool to help analyze mptcp pcaps                                                                                                |
+| [clanvas](https://github.com/marklalor/clanvas)                       | Command-line client for Canvas by Instructure                                                                                   |
