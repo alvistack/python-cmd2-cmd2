@@ -20,9 +20,9 @@ or,
 <p align="center">
   <a href="#main-features">Main Features</a> •
   <a href="#installation">Installation</a> •
-  <a href="#open-source-projects">Open source projects using cmd2</a>
+  <a href="#tutorials">Tutorials</a> •
+  <a href="#projects-using-cmd2">Projects using cmd2</a> •
   <a href="#version-two-notes">Version 2.0 Notes</a>
-  <a href="#tutorials">Tutorials</a>
 </p>
 
 [![Screenshot](cmd2.png)](https://youtu.be/DDU_JH6cFsA)
