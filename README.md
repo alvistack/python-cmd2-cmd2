@@ -1,4 +1,5 @@
 <h1 align="center">cmd2</h1>
+### Tab complete All-the-things
 
 [![Latest Version](https://img.shields.io/pypi/v/cmd2.svg?style=flat-square&label=latest%20stable%20version)](https://pypi.python.org/pypi/cmd2/)
 [![GitHub Actions](https://github.com/python-cmd2/cmd2/workflows/CI/badge.svg)](https://github.com/python-cmd2/cmd2/actions?query=workflow%3ACI)
@@ -7,15 +8,7 @@
 [![Documentation Status](https://readthedocs.org/projects/cmd2/badge/?version=latest)](http://cmd2.readthedocs.io/en/latest/?badge=latest)
 <a href="https://discord.gg/RpVG6tk"><img src="https://img.shields.io/badge/chat-on%20discord-7289da.svg" alt="Chat"></a>
 
-### A tool to create rich interactive REPL applications.
-
-or,
-
-### Create immersive interactive command line applications.
-
-or,
-
-### Create exploratory domain specific applications.
+<img src="https://imgflip.com/i/63h03x">
 
 <p align="center">
   <a href="#main-features">Main Features</a> •
