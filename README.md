@@ -1,5 +1,4 @@
-<h1 align="center">cmd2</h1>
-<h4>Tab complete All-the-things</h4>
+<h1 align="center">cmd2: Create immersive interactive command line applications</h1>
 
 [![Latest Version](https://img.shields.io/pypi/v/cmd2.svg?style=flat-square&label=latest%20stable%20version)](https://pypi.python.org/pypi/cmd2/)
 [![GitHub Actions](https://github.com/python-cmd2/cmd2/workflows/CI/badge.svg)](https://github.com/python-cmd2/cmd2/actions?query=workflow%3ACI)
@@ -8,7 +7,6 @@
 [![Documentation Status](https://readthedocs.org/projects/cmd2/badge/?version=latest)](http://cmd2.readthedocs.io/en/latest/?badge=latest)
 <a href="https://discord.gg/RpVG6tk"><img src="https://img.shields.io/badge/chat-on%20discord-7289da.svg" alt="Chat"></a>
 
-<a href="https://imgflip.com/i/63h03x"><img src="https://i.imgflip.com/63h03x.jpg" title="made at imgflip.com"/></a><div><a href="https://imgflip.com/memegenerator"></a></div>
 
 <p align="center">
   <a href="#main-features">Main Features</a> •
@@ -27,6 +25,10 @@ applications.  It provides a simple API which is an extension of Python's built-
 of cmd to make your life easier and eliminates much of the boilerplate code which would be necessary
 when using cmd.
 
+Philosophy
+-------------
+
+<a href="https://imgflip.com/i/63h03x"><img src="https://i.imgflip.com/63h03x.jpg" title="made at imgflip.com"/></a><div><a href="https://imgflip.com/memegenerator"></a></div>
 
 Main Features
 -------------
