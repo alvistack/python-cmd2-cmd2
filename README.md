@@ -1,27 +1,31 @@
 <h1 align="center">cmd2</h1>
 
-<table class="no-border">
-    <tr>
-        <td>[![Latest Version](https://img.shields.io/pypi/v/cmd2.svg?style=flat-square&label=latest%20stable%20version)](https://pypi.python.org/pypi/cmd2/)</td>
-        <td>[![GitHub Actions](https://github.com/python-cmd2/cmd2/workflows/CI/badge.svg)](https://github.com/python-cmd2/cmd2/actions?query=workflow%3ACI)</td>
-        <td>[![Documentation Status](https://readthedocs.org/projects/cmd2/badge/?version=latest)](http://cmd2.readthedocs.io/en/latest/?badge=latest)</td>
-    </tr>
-    <tr>
-        <td>[![Azure Build status](https://python-cmd2.visualstudio.com/cmd2/_apis/build/status/python-cmd2.cmd2?branch=master)](https://python-cmd2.visualstudio.com/cmd2/_build/latest?definitionId=1&branch=master)</td>
-        <td>[![codecov](https://codecov.io/gh/python-cmd2/cmd2/branch/master/graph/badge.svg)](https://codecov.io/gh/python-cmd2/cmd2)</td>
-        <td><a href="https://discord.gg/RpVG6tk"><img src="https://img.shields.io/badge/chat-on%20discord-7289da.svg" alt="Chat"></a></td>
-    </tr>
-</table>
+[![Latest Version](https://img.shields.io/pypi/v/cmd2.svg?style=flat-square&label=latest%20stable%20version)](https://pypi.python.org/pypi/cmd2/)
+[![GitHub Actions](https://github.com/python-cmd2/cmd2/workflows/CI/badge.svg)](https://github.com/python-cmd2/cmd2/actions?query=workflow%3ACI)
+[![Azure Build status](https://python-cmd2.visualstudio.com/cmd2/_apis/build/status/python-cmd2.cmd2?branch=master)](https://python-cmd2.visualstudio.com/cmd2/_build/latest?definitionId=1&branch=master)
+[![codecov](https://codecov.io/gh/python-cmd2/cmd2/branch/master/graph/badge.svg)](https://codecov.io/gh/python-cmd2/cmd2)
+[![Documentation Status](https://readthedocs.org/projects/cmd2/badge/?version=latest)](http://cmd2.readthedocs.io/en/latest/?badge=latest)
+<a href="https://discord.gg/RpVG6tk"><img src="https://img.shields.io/badge/chat-on%20discord-7289da.svg" alt="Chat"></a>
 
+### A tool to create rich interactive REPL applications.
 
-### A mature library aiding design of domain specific applications
+or,
+
+### Create immersive interactive command line applications.
+
+or,
+
+### Create exploratory domain specific applications.
 
 <p align="center">
   <a href="#main-features">Main Features</a> •
   <a href="#installation">Installation</a> •
   <a href="#open-source-projects">Open source projects using cmd2</a>
+  <a href="#version-two-notes">Version 2.0 Notes</a>
+  <a href="#tutorials">Tutorials</a>
 </p>
 
+[![Screenshot](cmd2.png)](https://youtu.be/DDU_JH6cFsA)
 
 cmd2 is a tool for building interactive command line applications in Python. Its goal is to make it
 quick and easy for developers to build feature-rich and user-friendly interactive command line
@@ -30,8 +34,6 @@ applications.  It provides a simple API which is an extension of Python's built-
 of cmd to make your life easier and eliminates much of the boilerplate code which would be necessary
 when using cmd.
 
-Click on image below to watch a short video demonstrating the capabilities of cmd2:
-[![Screenshot](cmd2.png)](https://youtu.be/DDU_JH6cFsA)
 
 Main Features
 -------------
@@ -62,17 +64,7 @@ Main Features
 - Alerts that seamlessly print while user enters text at prompt
 - Colored and stylized output using `ansi.style()`
 
-Version 2.0 Notes
------------------
-- Python 3.5 support ended
-  - The last release of `cmd2` to support Python 3.5 was the 1.5.0 release on January 31, 2021.  Python 3.5 was
-    [released](https://docs.python.org/3/whatsnew/3.5.html) on Sept. 13, 2015 and it reached
-    [end-of-life](https://devguide.python.org/#status-of-python-branches) on September 5, 2020.
-- `cmd2` 2.0 simplifies portions of the API and introduces new features. Many of these changes are not compatible with
-  previous versions of `cmd2`. For assistance with porting your current `cmd2` application to version 2.0, see the
-  [CHANGELOG](https://github.com/python-cmd2/cmd2/blob/master/CHANGELOG.md) for a description of each breaking
-  change and enhancement.
-    
+   
 Installation
 ------------
 On all operating systems, the latest stable version of `cmd2` can be installed using pip:
@@ -95,24 +87,15 @@ The latest documentation for cmd2 can be read online here: https://cmd2.readthed
 It is available in HTML, PDF, and ePub formats.
 
 
+The best way to learn the cmd2 api is to delve into the example applications located in source under examples.
+
 Feature Overview
 ----------------
 Instructions for implementing each feature follow.
 
 - Extension of the `cmd` module. So capabilities provided by `cmd` still exist
     - Your application inherits from `cmd2.Cmd`, let's say you call this class `MyApp`
-    ```Python
-    import cmd2
-    class MyApp(cmd2.Cmd):
-      pass
-    ```
     - Define a command named **foo** by creating a method named **do_foo**
-    ```Python
-    class MyApp(cmd2.Cmd):
-        def do_foo(self, args):
-            """This docstring is the built-in help for the foo command."""
-            self.poutput(cmd2.style('foo bar baz', fg=cmd2.Fg.RED))
-    ```
     - By default the docstring for your **do_foo** method is the help for the **foo** command
         - NOTE: This doesn't apply if you use one of the `argparse` decorators mentioned below
     - Can provide more custom help by creating a **help_foo** method (except when using `argparse` decorators)
@@ -144,28 +127,7 @@ Instructions for implementing each feature follow.
 - Parsing commands with `argparse`
     - The built-in `cmd2.with_argparser` decorator will parse arguments using `argparse.ArgumentParser`
       - Optionally, `cmd2.with_argparser(.., with_unknown_args=True)` can be used to pass all unknown arguments as a list
-
-    ```Python
-    from cmd2 import Cmd2ArgumentParser, with_argparser
-
-    argparser = Cmd2ArgumentParser()
-    argparser.add_argument('-p', '--piglatin', action='store_true', help='atinLay')
-    argparser.add_argument('-s', '--shout', action='store_true', help='N00B EMULATION MODE')
-    argparser.add_argument('words', nargs='+', help='words to say')
-
-    @with_argparser(argparser)
-    def do_speak(self, args):
-        """Repeats what you tell me to."""
-        words = []
-        for word in args.words:
-            if args.piglatin:
-                word = '%s%say' % (word[1:], word[0])
-            if args.shout:
-                word = word.upper()
-            words.append(word)
-        self.stdout.write('{}\n'.format(' '.join(words)))
-    ```
-
+ 
     See [Argument Processing](https://cmd2.readthedocs.io/en/latest/features/argument_processing.html) in the docs for more details
     
     NOTE: `cmd2` also provides the `Cmd2ArgumentParser` customization of `argparse.ArgumentParser` for prettier formatting
@@ -236,121 +198,6 @@ Tutorials
     * Basic cookiecutter template for cmd2 application : https://github.com/jayrod/cookiecutter-python-cmd2
     * Advanced cookiecutter template with external plugin support : https://github.com/jayrod/cookiecutter-python-cmd2-ext-plug
 
-Example Application
--------------------
-
-Example cmd2 application (**examples/example.py**):
-
-```python
-#!/usr/bin/env python
-# coding=utf-8
-"""
-A sample application for cmd2.
-"""
-import random
-import sys
-import cmd2
-
-class CmdLineApp(cmd2.Cmd):
-    """ Example cmd2 application. """
-
-    # Setting this true makes it run a shell command if a cmd2/cmd command doesn't exist
-    # default_to_shell = True
-    MUMBLES = ['like', '...', 'um', 'er', 'hmmm', 'ahh']
-    MUMBLE_FIRST = ['so', 'like', 'well']
-    MUMBLE_LAST = ['right?']
-
-    def __init__(self):
-        self.maxrepeats = 3
-        shortcuts = dict(cmd2.DEFAULT_SHORTCUTS)
-        shortcuts.update({'&': 'speak'})
-
-        super().__init__(multiline_commands=['orate'], shortcuts=shortcuts)
-
-        # Make maxrepeats settable at runtime
-        self.add_settable(cmd2.Settable('maxrepeats', int, 'max repetitions for speak command'))
-
-    speak_parser = cmd2.Cmd2ArgumentParser()
-    speak_parser.add_argument('-p', '--piglatin', action='store_true', help='atinLay')
-    speak_parser.add_argument('-s', '--shout', action='store_true', help='N00B EMULATION MODE')
-    speak_parser.add_argument('-r', '--repeat', type=int, help='output [n] times')
-    speak_parser.add_argument('words', nargs='+', help='words to say')
-
-    @cmd2.with_argparser(speak_parser)
-    def do_speak(self, args):
-        """Repeats what you tell me to."""
-        words = []
-        for word in args.words:
-            if args.piglatin:
-                word = '%s%say' % (word[1:], word[0])
-            if args.shout:
-                word = word.upper()
-            words.append(word)
-        repetitions = args.repeat or 1
-        for i in range(min(repetitions, self.maxrepeats)):
-            # .poutput handles newlines, and accommodates output redirection too
-            self.poutput(' '.join(words))
-
-    do_say = do_speak  # now "say" is a synonym for "speak"
-    do_orate = do_speak  # another synonym, but this one takes multi-line input
-
-    mumble_parser = cmd2.Cmd2ArgumentParser()
-    mumble_parser.add_argument('-r', '--repeat', type=int, help='how many times to repeat')
-    mumble_parser.add_argument('words', nargs='+', help='words to say')
-
-    @cmd2.with_argparser(mumble_parser)
-    def do_mumble(self, args):
-        """Mumbles what you tell me to."""
-        repetitions = args.repeat or 1
-        for i in range(min(repetitions, self.maxrepeats)):
-            output = []
-            if (random.random() < .33):
-                output.append(random.choice(self.MUMBLE_FIRST))
-            for word in args.words:
-                if (random.random() < .40):
-                    output.append(random.choice(self.MUMBLES))
-                output.append(word)
-            if (random.random() < .25):
-                output.append(random.choice(self.MUMBLE_LAST))
-            self.poutput(' '.join(output))
-
-if __name__ == '__main__':
-    app = CmdLineApp()
-    sys.exit(app.cmdloop())
-```
-
-The following is a sample session running example.py.
-Thanks to Cmd2's built-in transcript testing capability, it also serves as a test
-suite for example.py when saved as *transcript_regex.txt*.
-Running
-
-```bash
-python example.py -t transcript_regex.txt
-```
-will run all the commands in the transcript against `example.py`, verifying that the output produced
-matches the transcript.
-
-example/transcript_regex.txt:
-
-```text
-# Run this transcript with "python example.py -t transcript_regex.txt"
-# Anything between two forward slashes, /, is interpreted as a regular expression (regex).
-# The regex for editor will match whatever program you use.
-# regexes on prompts just make the trailing space obvious
-(Cmd) set
-allow_style: '/(Terminal|Always|Never)/'
-always_show_hint: False
-debug: False
-echo: False
-editor: /.*?/
-feedback_to_output: False
-maxrepeats: 3
-quiet: False
-timing: False
-```
-
-Regular expressions can be used anywhere within a transcript file simply by enclosing them within forward slashes, `/`.
-
 
 Found a bug?
 ------------
@@ -364,10 +211,8 @@ If you think you've found a bug, please first read through the open [Issues](htt
 * Include any traceback or error message associated with the bug
 
 
-Open source projects using cmd2
+Projects using cmd2
 -------------------------------
-
-Here are a few examples of open-source projects which use `cmd2`:
 
 | Application Name                                                      | Description                                                                                                                     |
 |-----------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
@@ -382,3 +227,16 @@ Here are a few examples of open-source projects which use `cmd2`:
 | [Expliot](https://gitlab.com/expliot_framework/expliot)               | Internet of Things (IoT) exploitation framework                                                                                 |
 | [mptcpanalyzer](https://github.com/teto/mptcpanalyzer)                | Tool to help analyze mptcp pcaps                                                                                                |
 | [clanvas](https://github.com/marklalor/clanvas)                       | Command-line client for Canvas by Instructure                                                                                   |
+
+
+Version 2.0 Notes
+-----------------
+- Python 3.5 support ended
+  - The last release of `cmd2` to support Python 3.5 was the 1.5.0 release on January 31, 2021.  Python 3.5 was
+    [released](https://docs.python.org/3/whatsnew/3.5.html) on Sept. 13, 2015 and it reached
+    [end-of-life](https://devguide.python.org/#status-of-python-branches) on September 5, 2020.
+- `cmd2` 2.0 simplifies portions of the API and introduces new features. Many of these changes are not compatible with
+  previous versions of `cmd2`. For assistance with porting your current `cmd2` application to version 2.0, see the
+  [CHANGELOG](https://github.com/python-cmd2/cmd2/blob/master/CHANGELOG.md) for a description of each breaking
+  change and enhancement.
+ 
