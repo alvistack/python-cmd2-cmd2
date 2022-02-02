@@ -1,4 +1,4 @@
-<h1 align="center">cmd2: Create immersive interactive command line applications</h1>
+<h1 align="center">cmd2 : immersive interactive command line applications</h1>
 
 [![Latest Version](https://img.shields.io/pypi/v/cmd2.svg?style=flat-square&label=latest%20stable%20version)](https://pypi.python.org/pypi/cmd2/)
 [![GitHub Actions](https://github.com/python-cmd2/cmd2/workflows/CI/badge.svg)](https://github.com/python-cmd2/cmd2/actions?query=workflow%3ACI)
@@ -32,34 +32,48 @@ Philosophy
 
 Main Features
 -------------
-- Searchable command history (`history` command and `<Ctrl>+r`) - optionally persistent
-- Text file scripting of your application with `run_script` (`@`) and `_relative_run_script` (`@@`)
-- Python scripting of your application with ``run_pyscript``
-- Run shell commands with ``!``
-- Pipe command output to shell commands with `|`
-- Redirect command output to file with `>`, `>>`
-- Bare `>`, `>>` with no filename send output to paste buffer (clipboard)
-- Optional `py` command runs interactive Python console which can be used to debug your application
-- Optional `ipy` command runs interactive IPython console which can be used to debug your application
-- Option to display long output using a pager with ``cmd2.Cmd.ppaged()``
-- Multi-line commands
-- Special-character command shortcuts (beyond cmd's `?` and `!`)
-- Command aliasing similar to bash `alias` command
-- Macros, which are similar to aliases, but they can contain argument placeholders
-- Ability to run commands at startup from an initialization script
-- Settable environment parameters
-- Parsing commands with arguments using `argparse`, including support for subcommands
-- Unicode character support
+
+Tab complete all of the goodness
 - Good tab completion of commands, subcommands, file system paths, and shell commands
+- Top-notch tab completion capabilities which are easy to use but very powerful
+- Can provide custom tab completion for the **foo** command by creating a **complete_foo** method
+History and how it could be used for awesome tab completion
+- Via optional `persistent_history_file` argument to `cmd2.Cmd` initializer
+- `cmd2` in combination with `argparse` also provide several advanced capabilities for automatic tab completion
 - Automatic tab completion of `argparse` flags when using one of the `cmd2` `argparse` decorators
-- Support for Python 3.6+ on Windows, macOS, and Linux
-- Trivial to provide built-in help for all commands
+
+I feel like these types of completion are important but they don't make sense unless you delve really deep into cmd2. 
+- `basic_complete` helper method for tab completion against a list
+- `path_complete` helper method provides flexible tab completion of file system paths
+- `delimiter_complete` helper method for tab completion against a list but each match is split on a delimiter 
+- `flag_based_complete` helper method for tab completion based on a particular flag preceding the token being completed
+- `index_based_complete` helper method for tab completion based on a fixed position in the input string
+
+
+Python scripting should be super highlighted
+- Python scripting of your application with ``run_pyscript``
+
+
+Transcripts are a great feature. Not sure if they are more useful for testing or for perhaps creating scripts...
 - Built-in regression testing framework for your applications (transcript-based testing)
 - Transcripts for use with built-in regression can be automatically generated from `history -t` or `run_script -t`
-- Alerts that seamlessly print while user enters text at prompt
-- Colored and stylized output using `ansi.style()`
+- Text file scripting of your application with `run_script` (`@`) and `_relative_run_script` (`@@`)
+- Simple scripting using text files with one command + arguments per line
+- Powerful and flexible built-in Python scripting of your application using the `run_pyscript` command
+- Run arbitrary Python scripts within your `cmd2` application with the ability to also call custom `cmd2` commands
 
-   
+
+Not sure about these
+- Macros, which are similar to aliases, but they can contain argument placeholders
+- Ability to run commands at startup from an initialization script
+
+
+Readline is useful but how many people actually remember to use it?
+- Readline history using `<Ctrl>+r`, arrow keys, and other [Readline Shortcut keys](http://readline.kablamo.org/emacs.html)
+- `cmd2` `history` command provides flexible and powerful search
+- Searchable command history (`history` command and `<Ctrl>+r`) - optionally persistent
+
+
 Installation
 ------------
 On all operating systems, the latest stable version of `cmd2` can be installed using pip:
@@ -83,104 +97,6 @@ It is available in HTML, PDF, and ePub formats.
 
 
 The best way to learn the cmd2 api is to delve into the example applications located in source under examples.
-
-Feature Overview
-----------------
-Instructions for implementing each feature follow.
-
-- Extension of the `cmd` module. So capabilities provided by `cmd` still exist
-    - Your application inherits from `cmd2.Cmd`, let's say you call this class `MyApp`
-    - Define a command named **foo** by creating a method named **do_foo**
-    - By default the docstring for your **do_foo** method is the help for the **foo** command
-        - NOTE: This doesn't apply if you use one of the `argparse` decorators mentioned below
-    - Can provide more custom help by creating a **help_foo** method (except when using `argparse` decorators)
-    - Can provide custom tab completion for the **foo** command by creating a **complete_foo** method
-    - Easy to upgrade an existing `cmd` app to `cmd2`
-    - Run your `cmd2` app using the built-in REPL by executing the **cmdloop** method
-
-- Searchable command history
-    - Readline history using `<Ctrl>+r`, arrow keys, and other [Readline Shortcut keys](http://readline.kablamo.org/emacs.html)
-    - `cmd2` `history` command provides flexible and powerful search
-        - If you wish to exclude some of your custom commands from the history, append their names to the list at `Cmd.exclude_from_history`.
-        - Do `help history` in any `cmd2` application for more information
-    - Both of the above types of history can be optionally persistent between application runs
-        - Via optional `persistent_history_file` argument to `cmd2.Cmd` initializer
-
-- Simple scripting using text files with one command + arguments per line
-    - See the [Command Scripts](https://cmd2.readthedocs.io/en/latest/features/scripting.html#command-scripts) section of the `cmd2` docs for more info
-    - See [script.txt](https://github.com/python-cmd2/cmd2/blob/master/examples/scripts/script.txt) for a trivial example script that can be
-    used in any `cmd2` application with the `run_script` command (or `@` shortcut)
-
-- Powerful and flexible built-in Python scripting of your application using the `run_pyscript` command
-    - Run arbitrary Python scripts within your `cmd2` application with the ability to also call custom `cmd2` commands
-    - No separate API for your end users to learn
-        - Syntax for calling `cmd2` commands in a `run_pyscript` is essentially identical to what they would enter on the command line
-    - See the [Python Scripts](https://cmd2.readthedocs.io/en/latest/features/scripting.html#python-scripts) section of the `cmd2` docs for more info
-    - Also see the [python_scripting.py](https://github.com/python-cmd2/cmd2/blob/master/examples/python_scripting.py) 
-    example in conjunction with the [conditional.py](https://github.com/python-cmd2/cmd2/blob/master/examples/scripts/conditional.py) script
-
-- Parsing commands with `argparse`
-    - The built-in `cmd2.with_argparser` decorator will parse arguments using `argparse.ArgumentParser`
-      - Optionally, `cmd2.with_argparser(.., with_unknown_args=True)` can be used to pass all unknown arguments as a list
- 
-    See [Argument Processing](https://cmd2.readthedocs.io/en/latest/features/argument_processing.html) in the docs for more details
-    
-    NOTE: `cmd2` also provides the `Cmd2ArgumentParser` customization of `argparse.ArgumentParser` for prettier formatting
-    of help and error messages.
-
-- `cmd2` applications function like a full-featured shell in many ways (and are cross-platform)
-    - Run arbitrary shell commands by preceding them with `!` or `shell`
-    - Redirect the output of any command to a file with `>` for overwrite or `>>` for append
-        - If no file name provided after the `>`/`>>`, then output goes to the clipboard/pastebuffer
-    - Pipe the output of any command to an arbitrary shell command with `|`
-    - Create your own custom command aliases using the `alias` command
-    - Create your own custom macros using the `macro` command (similar to aliases, but allow arguments)
-    - Settable environment parameters that users can change during execution supported via `set` command
-    - Option to display long output using a pager with ``cmd2.Cmd.ppaged()``
-    - Optionally specify a startup script that end users can use to customize their environment
-
-- Top-notch tab completion capabilities which are easy to use but very powerful
-    - For a command **foo** implement a **complete_foo** method to provide custom tab completion for that command
-        - But the helper methods within `cmd2` discussed below mean you would rarely have to implement this from scratch
-    - Commands which use one of the `argparse` decorators have automatic tab completion of `argparse` flags
-        - And also provide help hints for values associated with these flags
-        - Experiment with the [argprint.py](https://github.com/python-cmd2/cmd2/blob/master/examples/arg_print.py) example
-        using the **oprint** and **pprint** commands to get a feel for how this works
-    - `basic_complete` helper method for tab completion against a list
-    - `path_complete` helper method provides flexible tab completion of file system paths
-        - See the [paged_output.py](https://github.com/python-cmd2/cmd2/blob/master/examples/paged_output.py) example for a simple use case
-        - See the [python_scripting.py](https://github.com/python-cmd2/cmd2/blob/master/examples/python_scripting.py) example for a more full-featured use case
-    - `delimiter_complete` helper method for tab completion against a list but each match is split on a delimiter 
-        - See the [basic_completion.py](https://github.com/python-cmd2/cmd2/blob/master/examples/basic_completion.py) example for a demonstration of how to use this feature
-    - `flag_based_complete` helper method for tab completion based on a particular flag preceding the token being completed
-    - `index_based_complete` helper method for tab completion based on a fixed position in the input string
-        - See the [basic_completion.py](https://github.com/python-cmd2/cmd2/blob/master/examples/basic_completion.py) example for a demonstration of how to use these features
-        - `flag_based_complete()` and `index_based_complete()` are basic methods and should only be used if you are not
-        familiar with argparse. The recommended approach for tab completing positional tokens and flags is to use
-        argparse-based completion
-    - `cmd2` in combination with `argparse` also provide several advanced capabilities for automatic tab completion
-        - See the [argparse_completion.py](https://github.com/python-cmd2/cmd2/blob/master/examples/argparse_completion.py) example for more info
-
-- Multi-line commands
-
-    Any command accepts multi-line input when its name is listed the `multiline_commands` optional argument to 
-    `cmd2.Cmd.__init`. The program will keep expecting input until a line ends with any of the characters listed in the 
-    `terminators` optional argument to `cmd2.Cmd.__init__()`  .  The default terminators are `;` and `\n` (empty newline).
-
-- Special-character shortcut commands (beyond cmd's "@" and "!")
-
-    To create a single-character shortcut for a command, update `Cmd.shortcuts`.
-
-- Asynchronous alerts based on events happening in background threads
-    - `cmd2` provides the following helper methods for providing information to users asynchronously even though the `cmd2`
-    REPL is a line-oriented command interpreter:
-        - `async_alert` - display an important message to the user while they are at the prompt in between commands
-            - To the user it appears as if an alert message is printed above the prompt
-        - `async_update_prompt` - update the prompt while the user is still typing at it
-            - This is good for alerting the user to system changes dynamically in between commands
-        - `set_window_title` - set the terminal window title
-            - This changes the window title of the terminal that the user is running the `cmd2` app within
-
 
 Tutorials
 ---------
