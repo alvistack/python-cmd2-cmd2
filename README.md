@@ -30,6 +30,9 @@ Philosophy
 
 <a href="https://imgflip.com/i/63h03x"><img src="https://i.imgflip.com/63h03x.jpg" title="made at imgflip.com"/></a><div><a href="https://imgflip.com/memegenerator"></a></div>
 
+
+![system schema](https://github.com/python-cmd2/cmd2/blob/README_facelift/.github/images/graph.drawio.png)
+
 Main Features
 -------------
 
