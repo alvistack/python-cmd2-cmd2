@@ -25,56 +25,38 @@ applications.  It provides a simple API which is an extension of Python's built-
 of cmd to make your life easier and eliminates much of the boilerplate code which would be necessary
 when using cmd.
 
+The developers toolbox
+----------------------
+
+![system schema](https://github.com/python-cmd2/cmd2/blob/README_facelift/.github/images/graph.drawio.png)
+
+
+When creating solutions developers have no shortage of tools in the belt when it comes to rich and smart user interfaces. `cmd2` deftly fills the niche between high [ease of command discovery](https://clig.dev/#ease-of-discovery) and smart workflow automation systems. The above graph is over simplified helps to illustrate when one should reach for cmd2 as the right choice. CLIs have long been the go to pick for those concerned with automation. System administrators have long been duct taping together precarious workflows based on a menagerie of simple command line tools created by strangers on github and the guy down the hall. When CLIs become significantly complex the ease of discoverability tends to fade quickly. Web and GUIs on the other hand are first in class when allowing users to easily discover functionality. The price we pay for beautifully colored displays is it is exceedingly difficult to aggregate many of these applications into larger systems.
+
+With cmd2 you can have the best of both worlds. Application designers can easily create complex applications and rely on the cmd2 library to offer effortless user facing help and extensive tab completion. When users have become comfortable with functionality cmd2 turns into a feature rich library enabling a smooth transition to full automation. If designed with enough forethought, a well implemented cmd2 application can serve as a boutique workflow tool. `cmd2` pulls off this flexibility based on two pillars of philosophy.
+
 Philosophy
 -------------
 
 <a href="https://imgflip.com/i/63h03x"><img src="https://i.imgflip.com/63h03x.jpg" title="made at imgflip.com"/></a><div><a href="https://imgflip.com/memegenerator"></a></div>
 
 
-![system schema](https://github.com/python-cmd2/cmd2/blob/README_facelift/.github/images/graph.drawio.png)
+Deep extensive tab completion and help text generation based on the argparse library create the first pillar of 'ease of command discovery'. The following is a list of features in this category.
 
-Main Features
--------------
-
-Tab complete all of the goodness
-- Good tab completion of commands, subcommands, file system paths, and shell commands
-- Top-notch tab completion capabilities which are easy to use but very powerful
-- Can provide custom tab completion for the **foo** command by creating a **complete_foo** method
-History and how it could be used for awesome tab completion
-- Via optional `persistent_history_file` argument to `cmd2.Cmd` initializer
-- `cmd2` in combination with `argparse` also provide several advanced capabilities for automatic tab completion
-- Automatic tab completion of `argparse` flags when using one of the `cmd2` `argparse` decorators
-
-I feel like these types of completion are important but they don't make sense unless you delve really deep into cmd2. 
-- `basic_complete` helper method for tab completion against a list
-- `path_complete` helper method provides flexible tab completion of file system paths
-- `delimiter_complete` helper method for tab completion against a list but each match is split on a delimiter 
-- `flag_based_complete` helper method for tab completion based on a particular flag preceding the token being completed
-- `index_based_complete` helper method for tab completion based on a fixed position in the input string
+- Great tab completion of commands, subcommands, file system paths, and shell commands.
+- Custom tab completion for user designed commands via simple function overloading.
+- Tab completion from `persistent_history_file` sources added with very little friction.
+- Automatic tab completion of `argparse` flags and optional arguments.
+- Path completion easily enabled.
+- When all else fails, custom tab completion based on `choices_provider` can fill any gaps.
 
 
-Python scripting should be super highlighted
-- Python scripting of your application with ``run_pyscript``
+cmd2 creates the second pillar of 'ease of transition to automation' through alias/macro creation, command line argument parsing and execution of cmd2 scripting.
 
-
-Transcripts are a great feature. Not sure if they are more useful for testing or for perhaps creating scripts...
-- Built-in regression testing framework for your applications (transcript-based testing)
-- Transcripts for use with built-in regression can be automatically generated from `history -t` or `run_script -t`
+- Flexible alias and macro creation for quick abstraction of commands.
 - Text file scripting of your application with `run_script` (`@`) and `_relative_run_script` (`@@`)
-- Simple scripting using text files with one command + arguments per line
 - Powerful and flexible built-in Python scripting of your application using the `run_pyscript` command
-- Run arbitrary Python scripts within your `cmd2` application with the ability to also call custom `cmd2` commands
-
-
-Not sure about these
-- Macros, which are similar to aliases, but they can contain argument placeholders
-- Ability to run commands at startup from an initialization script
-
-
-Readline is useful but how many people actually remember to use it?
-- Readline history using `<Ctrl>+r`, arrow keys, and other [Readline Shortcut keys](http://readline.kablamo.org/emacs.html)
-- `cmd2` `history` command provides flexible and powerful search
-- Searchable command history (`history` command and `<Ctrl>+r`) - optionally persistent
+- Transcripts for use with built-in regression can be automatically generated from `history -t` or `run_script -t`
 
 
 Installation
