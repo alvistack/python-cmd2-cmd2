@@ -95,6 +95,29 @@ Tutorials
     * Advanced cookiecutter template with external plugin support : https://github.com/jayrod/cookiecutter-python-cmd2-ext-plug
 
 
+Hello World
+-----------
+
+```python
+#!/usr/bin/env python
+"""A simple cmd2 application."""
+import cmd2
+
+
+class FirstApp(cmd2.Cmd):
+    """A simple cmd2 application."""
+
+  def do_hello_world(self, _: cmd2.Statement):
+    self.poutput('Hello World')
+
+if __name__ == '__main__':
+    import sys
+    c = FirstApp()
+    sys.exit(c.cmdloop())
+
+```
+
+
 Found a bug?
 ------------
 
