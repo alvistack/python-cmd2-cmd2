@@ -40,7 +40,7 @@ Topic :: Software Development :: Libraries :: Python Modules
     )
 )  # noqa: E128
 
-SETUP_REQUIRES = ['setuptools >= 34.4', 'setuptools_scm >= 3.0']
+SETUP_REQUIRES = ['setuptools >= 34.4']
 
 INSTALL_REQUIRES = [
     'attrs >= 16.3.0',
@@ -91,7 +91,7 @@ PACKAGE_DATA = {
 
 setup(
     name="cmd2",
-    use_scm_version={'git_describe_command': 'git describe --dirty --tags --long --exclude plugin-*'},
+    version="2.4.0",
     description=DESCRIPTION,
     long_description=LONG_DESCRIPTION,
     long_description_content_type='text/markdown',

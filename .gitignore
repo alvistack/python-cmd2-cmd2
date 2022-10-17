@@ -37,3 +37,4 @@ Pipfile.lock
 
 # Virtualenv directory
 .venv
+.pybuild/
