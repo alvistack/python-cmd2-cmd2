@@ -42,7 +42,7 @@ Topic :: Software Development :: Libraries :: Python Modules
     )
 )  # noqa: E128
 
-SETUP_REQUIRES = ['setuptools', 'setuptools_scm']
+SETUP_REQUIRES = ['setuptools']
 
 INSTALL_REQUIRES = [
     'pyperclip',
@@ -97,7 +97,7 @@ PACKAGE_DATA = {
 
 setup(
     name="cmd2",
-    use_scm_version={'git_describe_command': 'git describe --dirty --tags --long --exclude plugin-*'},
+    version="2.5.2",
     description=DESCRIPTION,
     long_description=LONG_DESCRIPTION,
     long_description_content_type='text/markdown',

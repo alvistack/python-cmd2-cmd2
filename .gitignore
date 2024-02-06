@@ -46,3 +46,5 @@ Pipfile.lock
 
 # uv
 uv.lock
+
+.pybuild/
