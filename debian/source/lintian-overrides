@@ -1,0 +1,5 @@
+python-cmd2 source: file-without-copyright-information
+python-cmd2 source: no-debian-changes
+python-cmd2 source: source-contains-prebuilt-windows-binary
+python-cmd2 source: source-is-missing
+python-cmd2 source: source-package-encodes-python-version
