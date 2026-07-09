@@ -1,17 +1,16 @@
 [build-system]
-requires = ["build>=1.3.0", "setuptools>=80.8.0", "setuptools-scm>=9.2.1"]
+requires = ["build>=1.3.0", "setuptools>=80.8.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "cmd2"
-dynamic = ["version"]
+version = "4.1.0"
 description = "cmd2 - quickly build feature-rich and user-friendly interactive command line applications in Python"
 authors = [{ name = "cmd2 Contributors" }]
 readme = "README.md"
 requires-python = ">=3.11"
 keywords = ["CLI", "cmd", "command", "interactive", "prompt", "Python"]
-license = "MIT"
-license-files = ["LICENSE"]
+license = { text = "MIT" }
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Environment :: Console",
@@ -35,7 +34,7 @@ dependencies = [
 ]
 
 [dependency-groups]
-build = ["build>=1.3.0", "setuptools>=80.8.0", "setuptools-scm>=9.2.1"]
+build = ["build>=1.3.0", "setuptools>=80.8.0"]
 dev = [
     "codecov>=2.1",
     "ipython>=8.23",
@@ -52,7 +51,6 @@ dev = [
 docs = [
     "mkdocstrings[python]>=1",
     "setuptools>=80.8.0",
-    "setuptools_scm>=8",
     "zensical>=0.0.44",
 ]
 quality = ["prek>=0.3.5"]
@@ -102,8 +100,6 @@ addopts = [
 
 [tool.setuptools]
 packages = ["cmd2"]
-
-[tool.setuptools_scm]
 
 [tool.uv]
 default-groups = ["build", "dev"]
